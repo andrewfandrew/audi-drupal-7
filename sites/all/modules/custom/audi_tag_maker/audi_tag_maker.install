@@ -1,0 +1,52 @@
+<?php
+
+/**
+ * @file
+ * A module that creates a vocabulary and a set of terms i.e. tags
+ */
+
+/**
+ * Implements hook_install().
+ */
+function audi_tag_maker_install() {
+$new_vocab = (object) array(
+    'name' => 'Audi vocabulary one',
+    'description' => 'This vocabulary contains terms for tagging',
+    'machine_name' => 'audi_custom_vocab',
+);
+taxonomy_vocabulary_save($new_vocab);
+
+$vocab = taxonomy_vocabulary_machine_name_load('audi_custom_vocab');
+
+$term1 = (object) array(
+    'name' => 'Audi term one',
+    'description' => 'This is a tag',
+    'vid' => $vocab->vid,
+);
+
+taxonomy_term_save($term1);
+
+$term2 = (object) array(
+    'name' => 'Audi term two',
+    'description' => 'This is a tag',
+    'vid' => $vocab->vid,
+);
+
+taxonomy_term_save($term2);
+
+$term3 = (object) array(
+    'name' => 'Audi term three',
+    'description' => 'This is a tag',
+    'vid' => $vocab->vid,
+);
+
+taxonomy_term_save($term3);
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function audi_tag_maker_uninstall() {
+    $vocab = taxonomy_vocabulary_machine_name_load('audi_custom_vocab');
+    taxonomy_vocabulary_delete($vocab->vid);
+}
