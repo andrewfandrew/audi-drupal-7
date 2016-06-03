@@ -1,5 +1,5 @@
 name = Audi Tag Maker
-description = Installs and can remove a vocabulary, a set of tags
+description = Installs and a vocabulary, i.e. a set of tags. Uninstalling the module removes the vocabulary.
 package = Audi Tags
 core = 7.x
 
